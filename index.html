@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mini-voetbal bordspellen - de beste selectie voor liefhebbers van tafelvoetbal in Nederland!">
+    <meta name="keywords" content="bordspellen, mini-voetbal, tafelvoetbal, Nederland, Plinko Start Games">
+    <meta name="author" content="Plinko Start Games">
+    <title>Plinko Start Games - Mini-voetbal bordspellen</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <div id="cart-popup" class="cart-popup">Product toegevoegd aan winkelwagen!</div>
+
+    <div id="cart-modal" class="cart-modal" onclick="closeCart(event)">
+        <div class="cart-content" onclick="event.stopPropagation()">
+            <span class="close-cart" onclick="closeCart()">&times;</span>
+            <h2>Uw winkelwagen</h2>
+            <ul id="cart-items" class="cart-items"></ul>
+            <p id="cart-total" class="cart-total">Totaal: €0.00</p>
+            <button class="btn btn-primary" onclick="showOrderForm()">Bestellen</button>
+
+            <div id="order-form" class="order-form" style="display: none;">
+                <h3>Vul uw gegevens in</h3>
+                <form onsubmit="submitOrder(event)">
+                    <label for="name">Naam:</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+
+                    <label for="email">E-mail:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+
+                    <label for="phone">Telefoonnummer:</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+
+                    <label for="address">Adres:</label>
+                    <textarea id="address" name="address" class="form-control" required></textarea>
+
+                    <button type="submit" class="btn btn-success">Bevestigen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка корзины -->
+    <div id="cart-container" class="cart-container" onclick="openCart()">
+        <i class="fa-solid fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+    </div>
+
+    <script>
+        function showOrderForm() {
+            document.getElementById('order-form').style.display = 'block';
+        }
+
+        function closeCart(event) {
+            if (!event || event.target.id === 'cart-modal') {
+                document.getElementById('cart-modal').style.display = 'none';
+            }
+        }
+
+        function openCart() {
+            document.getElementById('cart-modal').style.display = 'block';
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            alert('Bestelling verzonden! We nemen binnenkort contact met u op.');
+            closeCart();
+        }
+    </script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Plinko Start Games</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/#advantages">Voordelen</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#about">Over ons</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#products">Producten</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#reviews">Recensies</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+   <section class="hero container mt-5 text-white text-center">
+    <div class="row align-items-center">
+        <div class="col-md-6 hero-text">
+            <h1 class="display-4">Welkom bij Plinko Start Games</h1>
+            <p class="lead">De beste mini-voetbal bordspellen in Nederland!</p>
+            <a href="#games" class="btn btn-warning btn-lg mt-3">Bekijk onze spellen</a>
+        </div>
+        <div class="col-md-6 hero-image">
+            <img src="images/football-action.jpg" alt="Mini-voetbal in actie" class="img-fluid rounded">
+        </div>
+    </div>
+</section>
+    
+    <section id="advantages" class="container mt-5">
+        <h2 class="text-center mb-4">Waarom ons kiezen?</h2>
+        <div class="row gx-4 gy-4">
+            <div class="col-md-4 d-flex flex-column align-items-center p-4 text-center border rounded bg-primary text-white shadow">
+                <i class="fa-solid fa-star fa-3x text-warning"></i>
+                <h4 class="mt-3">Hoge kwaliteit</h4>
+                <p>Onze bordspellen zijn gemaakt van duurzame materialen en bieden jarenlang speelplezier.</p>
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-center p-4 text-center border rounded bg-secondary text-white shadow">
+                <i class="fa-solid fa-gem fa-3x text-light"></i>
+                <h4 class="mt-3">Unieke ontwerpen</h4>
+                <p>Onze mini-voetbalspellen zijn ontworpen met oog voor detail en innovatie.</p>
+            </div>
+            <div class="col-md-4 d-flex flex-column align-items-center p-4 text-center border rounded bg-success text-white shadow">
+                <i class="fa-solid fa-truck fa-3x text-light"></i>
+                <h4 class="mt-3">Snelle levering</h4>
+                <p>Wij garanderen snelle en betrouwbare verzending in heel Nederland.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="products" class="container mt-5">
+        <h2 class="text-center">Onze producten</h2>
+        <div class="row gy-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product1.jpg" class="card-img-top" alt="Mini-voetbalspel Classic">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Classic</h5>
+                        <p class="card-text">Een klassiek mini-voetbalspel met hoogwaardige afwerking.</p>
+                        <p class="fw-bold">€29,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Classic" data-price="29.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product2.jpg" class="card-img-top" alt="Mini-voetbalspel Pro">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Pro</h5>
+                        <p class="card-text">Voor de echte pro’s: premium kwaliteit en design.</p>
+                        <p class="fw-bold">€39,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Pro" data-price="39.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product3.jpg" class="card-img-top" alt="Mini-voetbalspel Kids">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Kids</h5>
+                        <p class="card-text">Perfect voor kinderen! Veilig en leuk.</p>
+                        <p class="fw-bold">€24,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Kids" data-price="24.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product4.jpg" class="card-img-top" alt="Mini-voetbalspel Compact">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Compact</h5>
+                        <p class="card-text">Draagbaar en ideaal voor kleine ruimtes.</p>
+                        <p class="fw-bold">€19,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Compact" data-price="19.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product5.jpg" class="card-img-top" alt="Mini-voetbalspel Luxe">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Luxe</h5>
+                        <p class="card-text">Luxe editie met premium materialen.</p>
+                        <p class="fw-bold">€49,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Luxe" data-price="49.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product6.jpg" class="card-img-top" alt="Mini-voetbalspel LED">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel LED</h5>
+                        <p class="card-text">Met ingebouwde LED-verlichting voor extra sfeer.</p>
+                        <p class="fw-bold">€59,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel LED" data-price="59.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product7.jpg" class="card-img-top" alt="Mini-voetbalspel Travel">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Travel</h5>
+                        <p class="card-text">Ideaal voor onderweg en gemakkelijk mee te nemen.</p>
+                        <p class="fw-bold">€34,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Travel" data-price="34.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product8.jpg" class="card-img-top" alt="Mini-voetbalspel Retro">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Retro</h5>
+                        <p class="card-text">Vintage design voor liefhebbers van klassieke spellen.</p>
+                        <p class="fw-bold">€44,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Retro" data-price="44.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="images/product9.jpg" class="card-img-top" alt="Mini-voetbalspel Deluxe">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Mini-voetbalspel Deluxe</h5>
+                        <p class="card-text">De ultieme speelervaring met extra accessoires.</p>
+                        <p class="fw-bold">€69,99</p>
+                        <button class="btn btn-primary add-to-cart" data-name="Mini-voetbalspel Deluxe" data-price="69.99"><i class="fa-solid fa-cart-plus"></i> Toevoegen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Over ons</h2>
+                <p><strong>Welkom bij Plinko Start Games!</strong> Wij zijn gepassioneerde liefhebbers van mini-voetbal en bordspellen, en ons doel is om unieke spelervaringen te creëren voor gezinnen, vrienden en competitievelingen.</p>
+
+                <h3>Onze Missie</h3>
+                <p>Wij geloven dat spelletjes niet alleen <em>vermaak</em> bieden, maar ook <strong>verbinden</strong>. Onze mini-voetbal bordspellen brengen mensen samen en stimuleren strategisch denken, reactievermogen en teamgeest.</p>
+
+                <h3>Waarom Kiezen Voor Ons?</h3>
+                <ul>
+                    <li>✅ Hoogwaardige materialen en duurzame constructie</li>
+                    <li>✅ Unieke en innovatieve spelontwerpen</li>
+                    <li>✅ Geschikt voor alle leeftijden en niveaus</li>
+                    <li>✅ Snelle en betrouwbare levering in Nederland</li>
+                </ul>
+
+                <p>Onze passie voor het spel is wat ons drijft, en we werken constant aan nieuwe concepten en verbeteringen om onze klanten de best mogelijke ervaring te bieden. Of je nu een casual speler bent of een echte mini-voetbal fan, wij hebben het perfecte spel voor jou!</p>
+
+                <p class="mb-0">"Voetbal is meer dan een spel – het is een passie. Onze bordspellen brengen die passie naar jouw huiskamer!"</p>
+                <footer class="blockquote-footer">Plinko Start Games Team</footer>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="images/about-us.jpg" alt="Mini-voetbal spel" class="img-fluid rounded">
+            </div>
+        </div>
+    </section>
+    
+    <section id="reviews" class="container mt-5">
+    <h2 class="text-center">Recensies</h2>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="review-card">
+                    <img src="images/review1.jpg" alt="Klant 1" class="review-img">
+                    <h4>Emma Jansen</h4>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Fantastisch bordspel! Onze familie geniet er elke avond van. Echt een aanrader!"</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="review-card">
+                    <img src="images/review2.jpg" alt="Klant 2" class="review-img">
+                    <h4>Lars de Vries</h4>
+                    <div class="stars">⭐⭐⭐⭐</div>
+                    <p>"Erg leuk spel! De kwaliteit is top en de verzending was snel."</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="review-card">
+                    <img src="images/review3.jpg" alt="Klant 3" class="review-img">
+                    <h4>Sophie van Dijk</h4>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Heel veel speelplezier met vrienden! Goede investering voor game-avonden."</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="review-card">
+                    <img src="images/review4.jpg" alt="Klant 4" class="review-img">
+                    <h4>Thomas Bakker</h4>
+                    <div class="stars">⭐⭐⭐⭐</div>
+                    <p>"Zeer solide en goed ontworpen mini-voetbalspel. Ik ben erg tevreden."</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="review-card">
+                    <img src="images/review5.jpg" alt="Klant 5" class="review-img">
+                    <h4>Lisa Vermeer</h4>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>"Geweldig cadeau voor mijn zoon, hij is er helemaal weg van!"</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</section>
+    
+    <section id="contact" class="container mt-5">
+        <h2>Neem contact op</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/contact-location.jpg" alt="Klant 5" class="review-img">
+            </div>
+            <div class="col-md-6">
+                <form>
+                    <input type="text" class="form-control" placeholder="Naam" required>
+                    <input type="email" class="form-control mt-2" placeholder="E-mail" required>
+                    <textarea class="form-control mt-2" placeholder="Bericht" required></textarea>
+                    <button class="btn btn-primary mt-2"><i class="fa-solid fa-paper-plane"></i> Verzenden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section id="faq" class="container mt-5">
+    <h2 class="text-center">Veelgestelde vragen</h2>
+    <div class="accordion" id="faqAccordion">
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question1">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer1">
+                    Hoe lang duurt de verzending?
+                </button>
+            </h3>
+            <div id="answer1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">De verzending duurt meestal 2-3 werkdagen binnen Nederland.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question2">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer2">
+                    Kan ik mijn bestelling retourneren?
+                </button>
+            </h3>
+            <div id="answer2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Ja, je kunt je bestelling binnen 14 dagen retourneren mits ongebruikt en in originele verpakking.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question3">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer3">
+                    Welke betaalmethoden accepteren jullie?
+                </button>
+            </h3>
+            <div id="answer3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">We accepteren iDEAL, creditcards en PayPal.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question4">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer4">
+                    Zijn er verzendkosten?
+                </button>
+            </h3>
+            <div id="answer4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Bestellingen boven €50 worden gratis verzonden, anders zijn de verzendkosten €4,99.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question5">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer5">
+                    Bieden jullie ook cadeaubonnen aan?
+                </button>
+            </h3>
+            <div id="answer5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Ja, we bieden digitale cadeaubonnen aan in verschillende waarden.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question6">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer6">
+                    Zijn de producten geschikt voor kinderen?
+                </button>
+            </h3>
+            <div id="answer6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Ja, onze spellen zijn veilig en geschikt voor kinderen vanaf 6 jaar.</div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h3 class="accordion-header" id="question7">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#answer7">
+                    Hoe kan ik contact opnemen met de klantenservice?
+                </button>
+            </h3>
+            <div id="answer7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">Je kunt ons bereiken via e-mail of telefoon op werkdagen van 9:00 tot 17:00 uur.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <footer class="bg-dark text-white p-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 text-center text-md-start">
+                <h5>Contact</h5>
+                <p><i class="fa-solid fa-envelope"></i> <a href="mailto:info@plinkostartgames.com" class="text-white">info@plinkostartgames.com</a></p>
+                <p><i class="fa-solid fa-phone"></i> <a href="tel:+31611097893" class="text-white">+31 6 11097893</a></p>
+                <p><i class="fa-solid fa-map-marker-alt"></i> Weena 109, 3013 CH Rotterdam, Netherlands</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h5>Beleid</h5>
+                <ul class="list-unstyled">
+                    <li><a href="privacy-policy.html" class="text-white">Privacybeleid</a></li>
+                    <li><a href="terms-and-conditions.html" class="text-white">Algemene voorwaarden</a></li>
+                    <li><a href="cookie-policy.html" class="text-white">Cookiebeleid</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 text-center text-md-end">
+                <h5>Nieuwsbrief</h5>
+                <form>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Uw e-mailadres" required>
+                        <button class="btn btn-primary" type="submit">Abonneren</button>
+                    </div>
+                </form>
+                <div class="social-icons mt-3">
+                    <a href="https://facebook.com" class="text-white me-2"><i class="fa-brands fa-facebook fa-lg"></i></a>
+                    <a href="https://twitter.com" class="text-white me-2"><i class="fa-brands fa-twitter fa-lg"></i></a>
+                    <a href="https://instagram.com" class="text-white me-2"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    <a href="https://linkedin.com" class="text-white"><i class="fa-brands fa-linkedin fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            &copy; 2025 Plinko Start Games. Alle rechten voorbehouden.
+        </div>
+    </div>
+</footer>
+    
+    <div id="cookie-consent" class="cookie-box">
+    <p>We gebruiken cookies om uw ervaring te verbeteren. Door deze site te gebruiken, accepteert u ons <a href="cookie-policy.html">cookiebeleid</a>.</p>
+    <button class="btn btn-primary" onclick="acceptCookies()">Accepteren</button>
+</div>
+
+<script>
+    function acceptCookies() {
+        document.getElementById('cookie-consent').style.display = 'none';
+    }
+</script>
+
+    <script src="scripts/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 3,
+                spaceBetween: 20
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
